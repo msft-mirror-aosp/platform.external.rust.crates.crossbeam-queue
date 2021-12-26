@@ -42,40 +42,6 @@ license {
 rust_defaults {
     name: "crossbeam-queue_test_defaults",
     crate_name: "crossbeam_queue",
-    srcs: ["src/lib.rs"],
-    cargo_env_compat: true,
-    cargo_pkg_version: "0.3.2",
-    test_suites: ["general-tests"],
-    auto_gen_config: true,
-    edition: "2018",
-    features: [
-        "alloc",
-        "default",
-        "std",
-    ],
-    rustlibs: [
-        "libcfg_if",
-        "libcrossbeam_utils",
-        "librand",
-    ],
-}
-
-rust_test_host {
-    name: "crossbeam-queue_host_test_src_lib",
-    defaults: ["crossbeam-queue_test_defaults"],
-    test_options: {
-        unit_test: true,
-    },
-}
-
-rust_test {
-    name: "crossbeam-queue_device_test_src_lib",
-    defaults: ["crossbeam-queue_test_defaults"],
-}
-
-rust_defaults {
-    name: "crossbeam-queue_test_defaults_crossbeam_queue",
-    crate_name: "crossbeam_queue",
     cargo_env_compat: true,
     cargo_pkg_version: "0.3.2",
     test_suites: ["general-tests"],
@@ -94,9 +60,10 @@ rust_defaults {
     ],
 }
 
-rust_test_host {
-    name: "crossbeam-queue_host_test_tests_array_queue",
-    defaults: ["crossbeam-queue_test_defaults_crossbeam_queue"],
+rust_test {
+    name: "crossbeam-queue_test_tests_array_queue",
+    defaults: ["crossbeam-queue_test_defaults"],
+    host_supported: true,
     srcs: ["tests/array_queue.rs"],
     test_options: {
         unit_test: true,
@@ -104,24 +71,13 @@ rust_test_host {
 }
 
 rust_test {
-    name: "crossbeam-queue_device_test_tests_array_queue",
-    defaults: ["crossbeam-queue_test_defaults_crossbeam_queue"],
-    srcs: ["tests/array_queue.rs"],
-}
-
-rust_test_host {
-    name: "crossbeam-queue_host_test_tests_seg_queue",
-    defaults: ["crossbeam-queue_test_defaults_crossbeam_queue"],
+    name: "crossbeam-queue_test_tests_seg_queue",
+    defaults: ["crossbeam-queue_test_defaults"],
+    host_supported: true,
     srcs: ["tests/seg_queue.rs"],
     test_options: {
         unit_test: true,
     },
-}
-
-rust_test {
-    name: "crossbeam-queue_device_test_tests_seg_queue",
-    defaults: ["crossbeam-queue_test_defaults_crossbeam_queue"],
-    srcs: ["tests/seg_queue.rs"],
 }
 
 rust_library {
