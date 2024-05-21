@@ -47,7 +47,7 @@ rust_test {
     crate_name: "array_queue",
     cargo_env_compat: true,
     cargo_pkg_version: "0.3.11",
-    srcs: ["tests/array_queue.rs"],
+    crate_root: "tests/array_queue.rs",
     test_suites: ["general-tests"],
     auto_gen_config: true,
     test_options: {
@@ -72,7 +72,7 @@ rust_test {
     crate_name: "seg_queue",
     cargo_env_compat: true,
     cargo_pkg_version: "0.3.11",
-    srcs: ["tests/seg_queue.rs"],
+    crate_root: "tests/seg_queue.rs",
     test_suites: ["general-tests"],
     auto_gen_config: true,
     test_options: {
@@ -97,7 +97,7 @@ rust_library {
     crate_name: "crossbeam_queue",
     cargo_env_compat: true,
     cargo_pkg_version: "0.3.11",
-    srcs: ["src/lib.rs"],
+    crate_root: "src/lib.rs",
     edition: "2021",
     features: [
         "alloc",
